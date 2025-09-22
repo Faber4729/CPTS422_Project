@@ -1,4 +1,4 @@
-package CatACheckPackage;
+package java;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
