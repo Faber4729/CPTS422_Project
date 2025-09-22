@@ -1,0 +1,51 @@
+package CatACheckPackage;
+
+import com.puppycrawl.tools.checkstyle.api.*;
+
+public class CommentCountCheck extends AbstractCheck{
+	
+	private int commentCount = 0;
+	
+	// Allows for Comments in AST
+	@Override
+	public boolean isCommentNodesRequired() {
+		return true;
+	}
+	
+	// I Am Only Checking for // and /*, Assuming all Comments Started are Finished
+	@Override
+	public int[] getAcceptableTokens() {
+		return new int[] {TokenTypes.SINGLE_LINE_COMMENT,
+				TokenTypes.BLOCK_COMMENT_BEGIN
+			};
+	}
+	
+	@Override
+	public int[] getDefaultTokens() {
+		return getAcceptableTokens();
+	}
+	
+	@Override
+	public int[] getRequiredTokens() {
+	// TODO Auto-generated method stub
+	return getAcceptableTokens();
+	}
+	
+	@Override
+	public void visitToken(DetailAST aAST) {
+		// Increase Count 
+		commentCount++;
+	}
+	
+	@Override
+    public void beginTree(DetailAST aAST) {
+		commentCount = 0;
+    }
+
+    @Override
+    public void finishTree(DetailAST aAST) {
+    	// Logs the Number of Comments at the First Line
+    	log(1, "commentFinal", commentCount);
+    }
+
+}

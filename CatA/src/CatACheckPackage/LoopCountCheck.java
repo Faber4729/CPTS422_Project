@@ -1,0 +1,48 @@
+package CatACheckPackage;
+
+import com.puppycrawl.tools.checkstyle.api.*;
+
+public class LoopCountCheck extends AbstractCheck {
+
+	// Tracker Variable
+	private int loopCount = 0;
+	
+	@Override
+	public int[] getAcceptableTokens() {
+	// Gets All for, foreach, and while Tokens
+	return new int[] {TokenTypes.FOR_CONDITION,
+			TokenTypes.FOR_EACH_CLAUSE,
+			TokenTypes.LITERAL_WHILE};
+	}
+	
+	@Override
+	public int[] getDefaultTokens() {
+		return getAcceptableTokens();
+	}
+	
+	@Override
+	public int[] getRequiredTokens() {
+	// TODO Auto-generated method stub
+	return getAcceptableTokens();
+	}
+	
+	
+	@Override
+	public void visitToken(DetailAST aAST) {
+		// Increase Counter
+		loopCount++;
+	}	
+	
+	@Override
+    public void beginTree(DetailAST rootAST) {
+        loopCount = 0;
+    }
+
+    @Override
+    public void finishTree(DetailAST aAST) {
+    	// Logs the Number of Loops at the First Line
+    	log(1, "loopFinal", loopCount);
+    }
+
+	
+}
