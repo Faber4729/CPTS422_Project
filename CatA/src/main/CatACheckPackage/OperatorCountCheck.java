@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -63,14 +63,14 @@ public class OperatorCountCheck extends AbstractCheck{
 	}
 	
 	@Override
-    public void beginTree(DetailAST rootAST) {
+    public void beginTree(DetailAST aAST) {
         operatorCount = 0;
     }
 
     @Override
-    public void finishTree(DetailAST rootAST) {
-    	// Logs the Number of Operators at the Final Operator's Line
-    	log(rootAST.getLineNo(), "operatorFinal", operatorCount);
+    public void finishTree(DetailAST aAST) {
+    	// Logs the Number of Operators at the First Line
+    	log(aAST.getLineNo(), "operatorFinal", operatorCount);
     }
 	
 }

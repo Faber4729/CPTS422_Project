@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -47,13 +47,13 @@ public class OperandCountCheck extends AbstractCheck{
 	}
 	
 	@Override
-    public void beginTree(DetailAST rootAST) {
+    public void beginTree(DetailAST aAST) {
         expressionCount = 0;
     }
 
     @Override
-    public void finishTree(DetailAST rootAST) {
-    	// Logs the Number of Operands at the Last Operand's Line
-    	log(rootAST, "expressionFinal", expressionCount);
+    public void finishTree(DetailAST aAST) {
+    	// Logs the Number of Operands at the First Line
+    	log(aAST.getLineNo(), "expressionFinal", expressionCount);
     }
 }

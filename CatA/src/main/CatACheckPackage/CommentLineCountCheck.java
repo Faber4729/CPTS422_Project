@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -14,6 +14,7 @@ public class CommentLineCountCheck extends AbstractCheck{
 	}
 	
 	// I Am Counting Each // and /* */
+	// This Assumes the /* and */ are on Separate Lines From the Comment Text
 	@Override
 	public int[] getAcceptableTokens() {
 		return new int[] {TokenTypes.SINGLE_LINE_COMMENT, 
@@ -36,11 +37,22 @@ public class CommentLineCountCheck extends AbstractCheck{
 	@Override
 	public void visitToken(DetailAST aAST) {
 		// Increase Count If a Single Line Comment
-		commentLineCount++;
+		if(aAST.getType() == TokenTypes.SINGLE_LINE_COMMENT) {
+			commentLineCount++;
+		}
 		
 		// If It's a Block Beginning, Set the Start Variable
+		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_BEGIN) {
+			blockCommentStart = aAST.getLineNo();
+		}
 		
 		// If it's a Block End, Subtract To Get the Line Count
+		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_END) {
+			commentLineCount += aAST.getLineNo() - blockCommentStart;
+			
+			// Add One Line to Account For the End Comment
+			commentLineCount++;
+		}
 		
 	}
 	
@@ -52,6 +64,6 @@ public class CommentLineCountCheck extends AbstractCheck{
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Comments at the First Line
-    	log(1, "commentCountFinal", commentLineCount);
+    	log(aAST.getLineNo(), "commentLineFinal", commentLineCount);
     }
 }

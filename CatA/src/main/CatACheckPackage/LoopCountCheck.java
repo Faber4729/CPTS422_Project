@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -34,14 +34,14 @@ public class LoopCountCheck extends AbstractCheck {
 	}	
 	
 	@Override
-    public void beginTree(DetailAST rootAST) {
+    public void beginTree(DetailAST aAST) {
         loopCount = 0;
     }
 
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Loops at the First Line
-    	log(1, "loopFinal", loopCount);
+    	log(aAST.getLineNo(), "loopFinal", loopCount);
     }
 
 	

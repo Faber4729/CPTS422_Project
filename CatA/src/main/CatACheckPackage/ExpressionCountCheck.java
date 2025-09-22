@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -46,14 +46,14 @@ public class ExpressionCountCheck extends AbstractCheck {
 		}
 		
 		@Override
-	    public void beginTree(DetailAST rootAST) {
+	    public void beginTree(DetailAST aAST) {
 	        expressionCount = 0;
 	    }
 
 	    @Override
-	    public void finishTree(DetailAST rootAST) {
-	    	// Logs the Number of Expressions at the Final Expression's Line
-	    	log(rootAST.getLineNo(), "expressionFinal", expressionCount);
+	    public void finishTree(DetailAST aAST) {
+	    	// Logs the Number of Expressions at First Line
+	    	log(aAST.getLineNo(), "expressionFinal", expressionCount);
 	    }
 		
 	}

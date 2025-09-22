@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -45,7 +45,7 @@ public class CommentCountCheck extends AbstractCheck{
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Comments at the First Line
-    	log(1, "commentFinal", commentCount);
+    	log(aAST.getLineNo(), "commentFinal", commentCount);
     }
 
 }
