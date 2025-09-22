@@ -7,7 +7,7 @@ public class OperatorCountCheck extends AbstractCheck{
 	private int operatorCount = 0;
 	
 	// I Got These Tokens From https://checkstyle.sourceforge.io/checks/whitespace/operatorwrap.html#OperatorWrap
-	// They're: +, -, *, /, %, ==, !=, [] NEED TO FINISH TYPING OUT	
+	// They're: +, -, *, /, %, ++, --, ==, !=, >>>, <<<, >, <, >=, <=, ^, |, ||, &&, ^=, +=, -=, /=, *=, %=, >>>=, |=, ||=
 	@Override
 	public int[] getAcceptableTokens() {
 		return new int[] {TokenTypes.DIV, 
@@ -17,6 +17,8 @@ public class OperatorCountCheck extends AbstractCheck{
 				TokenTypes.MOD, 
 				TokenTypes.EQUAL, 
 				TokenTypes.NOT_EQUAL,
+				TokenTypes.INC,
+				TokenTypes.DEC, 
 				TokenTypes.SR, 
 				TokenTypes.BSR, 
 				TokenTypes.GE, 
@@ -36,6 +38,7 @@ public class OperatorCountCheck extends AbstractCheck{
 				TokenTypes.MOD_ASSIGN, 
 				TokenTypes.SR_ASSIGN, 
 				TokenTypes.BOR_ASSIGN, 
+				TokenTypes.BSR_ASSIGN,
 				TokenTypes.BXOR_ASSIGN, 
 				TokenTypes.BAND_ASSIGN
 			};
