@@ -4,7 +4,9 @@ Bundle-Name: CatA
 Bundle-SymbolicName: CatA;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.swt,
- org.eclipse.jface
+ org.eclipse.jface,
+ org.junit,
+ junit-jupiter-api
 Automatic-Module-Name: LoopCount
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Import-Package: com.puppycrawl.tools.checkstyle.api

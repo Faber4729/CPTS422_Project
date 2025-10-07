@@ -26,8 +26,7 @@ public class ExpressionCountCheck extends AbstractCheck {
 		
 		@Override
 		public int[] getRequiredTokens() {
-		// TODO Auto-generated method stub
-		return getAcceptableTokens();
+			return getAcceptableTokens();
 		}
 		
 		@Override

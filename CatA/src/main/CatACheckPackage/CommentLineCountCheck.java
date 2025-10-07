@@ -14,7 +14,6 @@ public class CommentLineCountCheck extends AbstractCheck{
 	}
 	
 	// I Am Counting Each // and /* */
-	// This Assumes the /* and */ are on Separate Lines From the Comment Text
 	@Override
 	public int[] getAcceptableTokens() {
 		return new int[] {TokenTypes.SINGLE_LINE_COMMENT, 
@@ -30,8 +29,7 @@ public class CommentLineCountCheck extends AbstractCheck{
 	
 	@Override
 	public int[] getRequiredTokens() {
-	// TODO Auto-generated method stub
-	return getAcceptableTokens();
+		return getAcceptableTokens();
 	}
 	
 	@Override

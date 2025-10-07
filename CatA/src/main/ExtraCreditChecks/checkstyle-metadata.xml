@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE checkstyle-metadata PUBLIC
+"-//eclipse-cs//DTD Check Metadata 1.1//EN"
+"http://eclipse-cs.sourceforge.net/dtds/checkstyle-metadata_1_1.dtd">
+<checkstyle-metadata>
+	<rule-group-metadata name="Category A Checks" priority="1600">
+		<description>%CatAChecks.desc</description>
+		
+		<rule-metadata name="%VariableCount.name" internal-name="VariableCount" parent="TreeWalker">
+			<alternative-name internal-name="ExtraCreditChecks.VariableDeclarationCheck" />
+		<description>%VariableCount.desc</description>
+		</rule-metadata>
+		<rule-metadata name="%CastCount.name" internal-name="CastCount" parent="TreeWalker">
+			<alternative-name internal-name="ExtraCreditChecks.CastCheck" />
+		<description>%CastCount.desc</description>
+		</rule-metadata>
+		
+	</rule-group-metadata>
+</checkstyle-metadata>
