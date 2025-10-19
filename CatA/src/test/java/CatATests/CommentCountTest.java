@@ -3,7 +3,7 @@ package java.CatATests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import com.puppycrawl.tools.checkstyle.api.TokenTypes;
+import com.puppycrawl.tools.checkstyle.api.*;
 
 import CatACheckPackage.CommentCountCheck;
 
@@ -11,7 +11,16 @@ import static org.mockito.Mockito.*;
 
 public class CommentCountTest {
 	
-	// Confirm isCommentNodesRequired
+	// Test for if isCommentNodesRequired
+	@Test
+	public void testCommentNodesRequired{
+		
+		// Create spyCommentCountCheck
+		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
+
+		// Assert that Comment Nodes are Required
+		assertEquals(true, spyCommentCountCheck.isCommentNodesRequired());	
+	}
 	
 	// Check getAcceptableTokens
 	@Test
@@ -28,7 +37,6 @@ public class CommentCountTest {
 		// Assert the Returned Values Are the Same as Expected
 		assertEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
 	}
-	
 	
 	// getDefaultTokens Test
 	@Test
@@ -77,12 +85,51 @@ public class CommentCountTest {
 	// Check Visit Token
 	@Test
 	public void testVisitToken{
+		// Create spyCommentCountCheck
+		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
 		
+		// Create a Mock AST For Visiting Token
+		DetailAST mockAST = mock(DetailAST.class); 
+		
+		// Confirm Comment Count is Initially 0
+		assertEquals(0, spyCommentCountCheck.getCommentCount());	
+				
+		// Run Visit Token
+		spyCommentCountCheck.visitToken(mockAST);
+		
+		// Assert the Returned Values Are the Same as Expected
+		assertEquals(1, spyCommentCountCheck.getCommentCount());
+		
+		// Run Visit Token Multiple Times
+		spyCommentCountCheck.visitToken(mockAST);
+		spyCommentCountCheck.visitToken(mockAST);
+		spyCommentCountCheck.visitToken(mockAST);
+		spyCommentCountCheck.visitToken(mockAST);
+		
+		// Assert the Final Value is As Expected
+		assertEquals(5, spyCommentCountCheck.getCommentCount());
 	}
 	
 	// Check Begin Tree
 	@Test
 	public void testBeginTree{
+		// Create spyCommentCountCheck
+		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
+		
+		// Create a Mock AST For Tree
+		DetailAST mockAST = mock(DetailAST.class); 
+		
+		// Confirm Comment Count is Initially 0
+		assertEquals(0, spyCommentCountCheck.getCommentCount());	
+				
+		// Run Begin Tree
+		spyCommentCountCheck.beginTree(mockAST);
+		
+		// Assert that CommentCount is Still 0
+		assertEquals(0, spyCommentCountCheck.getCommentCount());
+		
+		// Verify That Visit Token Was Never Called
+		verify(spyCommentCountCheck, never()).visitToken(mockAST);
 		
 	}
 	
@@ -90,84 +137,28 @@ public class CommentCountTest {
 	// Check Finish Tree
 	@Test
 	public void testFinishTree{
-		String spyLine;
+		// Create spyCommentCountCheck
+		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
 		
+		// Create a Mock AST For Beginning Tree
+		DetailAST mockAST = mock(DetailAST.class); 
 		
+		// Set Return for Tree Line Number to be 0
+		doReturn(0).when(mockAST.getLineNo());
+		
+		// Run Visit Token 3 Times to Increase Comment Count
+		spyCommentCountCheck.visitToken(mockAST);
+		spyCommentCountCheck.visitToken(mockAST);
+		spyCommentCountCheck.visitToken(mockAST);
+				
+		// Run Finish Tree
+		spyCommentCountCheck.finishTree(mockAST);
+		
+		// Verify That log Was Called With All Arguments
+		verify(spyCommentCountCheck.log(0, "commentFinal", 3));
+		
+		// Assert that the Line Number is Still 0 and CommentCount is 3
+		assertEquals(0, mockAST.getLineNo());
+		assertEquals(3, spyCommentCountCheck.getCommentCount());
 	}
-	
-	@Test
-	public void testValidCombination() throws IllegalDateException {
-
-		assertFalse(Date.isLeap(2012));
-		assertFalse(Date.validCombination(29, 2, 2012));
-		
-		//How to mock a static function: 
-		try (MockedStatic<Date> mockDate = mockStatic(Date.class, CALLS_REAL_METHODS))
-		{
-			mockDate.when(() -> Date.isLeap(2012)).thenReturn(true);
-
-			//assertTrue(Date.isLeap(2012));
-			assertTrue(Date.validCombination(29, 2, 2012));
-			
-			mockDate.when(() -> Date.isLeap(2017)).thenReturn(false);
-			assertFalse(Date.isLeap(2017));		
-			assertFalse(Date.validCombination(29, 2, 2017));
-			assertTrue(Date.validCombination(31, 1, 2017));
-			assertFalse(Date.validCombination(31, 6, 2017));
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}	
-	}
-
-	
-//
-//	public class CommentCountCheck extends AbstractCheck{
-//		
-//		private int commentCount = 0;
-//		
-//		// Allows for Comments in AST
-//		@Override
-//		public boolean isCommentNodesRequired() {
-//			return true;
-//		}
-//		
-//		// I Am Only Checking for // and /*, Assuming all Comments Started are Finished
-//		@Override
-//		public int[] getAcceptableTokens() {
-//			return new int[] {TokenTypes.SINGLE_LINE_COMMENT,
-//					TokenTypes.BLOCK_COMMENT_BEGIN
-//				};
-//		}
-//		
-//		@Override
-//		public int[] getDefaultTokens() {
-//			return getAcceptableTokens();
-//		}
-//		
-//		@Override
-//		public int[] getRequiredTokens() {
-//			return getAcceptableTokens();
-//		}
-//		
-//		@Override
-//		public void visitToken(DetailAST aAST) {
-//			// Increase Count 
-//			commentCount++;
-//		}
-//		
-//		@Override
-//	    public void beginTree(DetailAST aAST) {
-//			commentCount = 0;
-//	    }
-//
-//	    @Override
-//	    public void finishTree(DetailAST aAST) {
-//	    	// Logs the Number of Comments at the First Line
-//	    	log(aAST.getLineNo(), "commentFinal", commentCount);
-//	    }
-//
-//	}
-
 }
