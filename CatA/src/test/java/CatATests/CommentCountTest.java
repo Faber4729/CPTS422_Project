@@ -13,7 +13,7 @@ public class CommentCountTest {
 	
 	// Test for if isCommentNodesRequired
 	@Test
-	public void testCommentNodesRequired{
+	public void testCommentNodesRequired(){
 		
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
@@ -24,7 +24,7 @@ public class CommentCountTest {
 	
 	// Check getAcceptableTokens
 	@Test
-	public void testGetDefaultTokens{
+	public void testGetAcceptableTokens(){
 		
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
@@ -35,12 +35,12 @@ public class CommentCountTest {
 		spyCommentCountCheck.getRequiredTokens();
 		
 		// Assert the Returned Values Are the Same as Expected
-		assertEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
+		assertArrayEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
 	}
 	
 	// getDefaultTokens Test
 	@Test
-	public void testGetDefaultTokens{
+	public void testGetDefaultTokens(){
 		
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
@@ -57,12 +57,12 @@ public class CommentCountTest {
 		verify(spyCommentCountCheck).getAcceptableTokens();
 		
 		// Assert the Returned Values Are the Same as Expected
-		assertEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
+		assertArrayEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
 	}
 	
 	// getRequiredTokens Test
 	@Test
-	public void testGetRequiredTokens{
+	public void testGetRequiredTokens(){
 		
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
@@ -79,12 +79,12 @@ public class CommentCountTest {
 		verify(spyCommentCountCheck).getAcceptableTokens();
 		
 		// Assert the Returned Values Are the Same as Expected
-		assertEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
+		assertArrayEquals(tokenArray, spyCommentCountCheck.getAcceptableTokens());	
 	}
 	
 	// Check Visit Token
 	@Test
-	public void testVisitToken{
+	public void testVisitToken(){
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
 		
@@ -112,7 +112,7 @@ public class CommentCountTest {
 	
 	// Check Begin Tree
 	@Test
-	public void testBeginTree{
+	public void testBeginTree(){
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
 		
@@ -130,13 +130,12 @@ public class CommentCountTest {
 		
 		// Verify That Visit Token Was Never Called
 		verify(spyCommentCountCheck, never()).visitToken(mockAST);
-		
 	}
 	
 	
 	// Check Finish Tree
 	@Test
-	public void testFinishTree{
+	public void testFinishTree(){
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = spy(new CommentCountCheck());
 		
@@ -155,7 +154,7 @@ public class CommentCountTest {
 		spyCommentCountCheck.finishTree(mockAST);
 		
 		// Verify That log Was Called With All Arguments
-		verify(spyCommentCountCheck.log(0, "commentFinal", 3));
+		verify(spyCommentCountCheck).log(0, "commentFinal", 3);
 		
 		// Assert that the Line Number is Still 0 and CommentCount is 3
 		assertEquals(0, mockAST.getLineNo());
