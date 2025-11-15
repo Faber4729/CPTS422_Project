@@ -6,27 +6,27 @@
 	<rule-group-metadata name="Category B Checks" priority="1600">
 		<description>%CatBChecks.desc</description>
 
-		<rule-metadata name="hLength.name" internal-name="HalsteadLength" parent="TreeWalker">
+		<rule-metadata name="%hLength.name" internal-name="HLength" parent="TreeWalker">
 			<alternative-name internal-name="CatBCheckPackage.HLengthCheck" />
 		<description>%hLength.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="hVocab.name" internal-name="HalsteadVocabulary" parent="TreeWalker">
+		<rule-metadata name="%hVocab.name" internal-name="HVocab" parent="TreeWalker">
 			<alternative-name internal-name="CatBCheckPackage.HVocabCheck" />
 		<description>%hVocab.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="hVol.name" internal-name="HalsteadVolume" parent="TreeWalker">
+		<rule-metadata name="%hVol.name" internal-name="HVol" parent="TreeWalker">
 			<alternative-name internal-name="CatBCheckPackage.HVolCheck" />
 		<description>%hVol.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="hDifficulty.name" internal-name="HalsteadDifficulty" parent="TreeWalker">
+		<rule-metadata name="%hDifficulty.name" internal-name="HDifficulty" parent="TreeWalker">
 			<alternative-name internal-name="CatBCheckPackage.HDifficultyCheck" />
 		<description>%hDifficulty.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="hEffort.name" internal-name="HalsteadEffort" parent="TreeWalker">
+		<rule-metadata name="%hEffort.name" internal-name="HEffort" parent="TreeWalker">
 			<alternative-name internal-name="CatBCheckPackage.HEffortCheck" />
 		<description>%hEffort.desc</description>
 		</rule-metadata>

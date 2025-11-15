@@ -79,7 +79,8 @@ public class OperandCountCheck extends AbstractCheck{
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Operands at the First Line
-    	log(aAST.getLineNo(), "expressionFinal", expressionCount, " And unique: ", uExpressionCount);
+    	log(aAST.getLineNo(), "expressionFinal", expressionCount);
+    	log(3, " And unique: ", uExpressionCount);
     }
     
     // For Halstead Purposes, Get Count
