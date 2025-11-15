@@ -44,12 +44,11 @@ public class CommentCountCheck extends AbstractCheck{
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Comments at the First Line
-    	log(aAST.getLineNo(), "commentFinal", commentCount);
+    	log(aAST.getLineNo(), "commentFinal", commentCount, " AHASFKGHDKHD");
     }
     
-    // For Testing Purposes, Get Comment Count
+    // Get Comment Count for Testing Purposes
     public int getCommentCount() {
     	return this.commentCount;
     }
-
 }

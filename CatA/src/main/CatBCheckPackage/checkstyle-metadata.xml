@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE checkstyle-metadata PUBLIC
+"-//eclipse-cs//DTD Check Metadata 1.1//EN"
+"http://eclipse-cs.sourceforge.net/dtds/checkstyle-metadata_1_1.dtd">
+<checkstyle-metadata>
+	<rule-group-metadata name="Category B Checks" priority="1600">
+		<description>%CatBChecks.desc</description>
+
+		<rule-metadata name="hLength.name" internal-name="HalsteadLength" parent="TreeWalker">
+			<alternative-name internal-name="CatBCheckPackage.HLengthCheck" />
+		<description>%hLength.desc</description>
+		</rule-metadata>
+		
+		<rule-metadata name="hVocab.name" internal-name="HalsteadVocabulary" parent="TreeWalker">
+			<alternative-name internal-name="CatBCheckPackage.HVocabCheck" />
+		<description>%hVocab.desc</description>
+		</rule-metadata>
+		
+		<rule-metadata name="hVol.name" internal-name="HalsteadVolume" parent="TreeWalker">
+			<alternative-name internal-name="CatBCheckPackage.HVolCheck" />
+		<description>%hVol.desc</description>
+		</rule-metadata>
+		
+		<rule-metadata name="hDifficulty.name" internal-name="HalsteadDifficulty" parent="TreeWalker">
+			<alternative-name internal-name="CatBCheckPackage.HDifficultyCheck" />
+		<description>%hDifficulty.desc</description>
+		</rule-metadata>
+		
+		<rule-metadata name="hEffort.name" internal-name="HalsteadEffort" parent="TreeWalker">
+			<alternative-name internal-name="CatBCheckPackage.HEffortCheck" />
+		<description>%hEffort.desc</description>
+		</rule-metadata>
+		
+	</rule-group-metadata>
+</checkstyle-metadata>

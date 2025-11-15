@@ -43,5 +43,9 @@ public class LoopCountCheck extends AbstractCheck {
     	log(aAST.getLineNo(), "loopFinal", loopCount);
     }
 
+    // Get Loop Count for Testing Purposes
+    public int getLoopCount() {
+    	return this.loopCount;
+    }
 	
 }

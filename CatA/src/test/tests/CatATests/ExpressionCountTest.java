@@ -1,4 +1,4 @@
-package java.CatATests;
+package tests.CatATests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
