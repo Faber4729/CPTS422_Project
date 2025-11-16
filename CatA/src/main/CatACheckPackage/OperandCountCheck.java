@@ -5,25 +5,26 @@ import com.puppycrawl.tools.checkstyle.api.*;
 public class OperandCountCheck extends AbstractCheck{
 
 	// Overall Operand Count
-	private int operandCount = 0;
+	private int operandCount = 1;
 	
 	// Unique Operand Count
-	private int uOperandCount = 0;
-	private int[] operandCollection = {1, 1, 1, 1, 1}; // The Length of All Possible Tokens
-	private int spot = 0;
+	private int uOperandCount = 1;
+	private String[] uOperandList = new String[0];
 	
-	// I Am Only Checking for /, +, -, *, %
-	// Assuming that Expressions Are Only Basic Algebraic Expressions
-	// This Counts Things Like: string = "a" + "b" and i++	
-	
+	// These Are All Strings, Variables, True/False, and Numbers
+	// This Also Includes Package Names, Method Names, and main/args in main(string[] args)
 	@Override
 	public int[] getAcceptableTokens() {
-		return new int[] {TokenTypes.DIV, 
-				TokenTypes.PLUS, 
-				TokenTypes.MINUS, 
-				TokenTypes.STAR, 
-				TokenTypes.MOD
-			};
+		return new int[] {TokenTypes.IDENT, // Variable
+			TokenTypes.NUM_DOUBLE,
+			TokenTypes.NUM_FLOAT,
+			TokenTypes.NUM_LONG,
+			TokenTypes.NUM_INT,
+			TokenTypes.STRING_LITERAL,
+			TokenTypes.LITERAL_TRUE,
+			TokenTypes.LITERAL_FALSE,
+		};
+
 	}
 	
 	@Override
@@ -38,17 +39,17 @@ public class OperandCountCheck extends AbstractCheck{
 	
 	@Override
 	public void visitToken(DetailAST aAST) {
-		// Increase Count 
+		// Increase OperandCount
 		operandCount++;
 		
-//		// Check if Symbol is Unique
+		// Check if Symbol is Unique
 		boolean flag = false;
-		
-		for(int element : operandCollection) {
-			if(element != 1) {
-				if(aAST.getType() == element) {
-					flag = true;
-				}
+
+		// Iterate Through All Operands
+		for(String element : uOperandList) {
+			if(aAST.getText().equals(element)) {
+				// If the Operand Exists, Set Flag to True
+				flag = true;
 			}
 		}
 		
@@ -56,9 +57,18 @@ public class OperandCountCheck extends AbstractCheck{
 		if(flag == false) {
 			uOperandCount++;
 			
-			// And Add Type to Collection
-			operandCollection[spot] = aAST.getType();
-			spot++;
+			// Recreate Unique List
+			String[] newOperandList = new String[uOperandList.length + 1];
+			
+			for (int i = 0; i < uOperandList.length; i++) {
+				newOperandList[i] = uOperandList[i];
+			}
+			
+			// Add Type to Operand Collection
+			newOperandList[newOperandList.length-1] = aAST.getText();
+			
+			// Set List to Modified One
+			uOperandList = newOperandList;
 		}
 		
 	}
@@ -72,6 +82,10 @@ public class OperandCountCheck extends AbstractCheck{
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Operands at the First Line
     	log(aAST.getLineNo(), "operandFinal", operandCount, uOperandCount);
+    	
+    	for (int i = 0; i < uOperandList.length; i++) {
+    		log(3, uOperandList[i]);
+    	}
     }
     
     // For Halstead Purposes, Get Count

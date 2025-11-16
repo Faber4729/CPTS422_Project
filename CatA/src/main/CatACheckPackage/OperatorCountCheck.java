@@ -4,7 +4,12 @@ import com.puppycrawl.tools.checkstyle.api.*;
 
 public class OperatorCountCheck extends AbstractCheck{
 
-	private int operatorCount = 0;
+	private int operatorCount = 1;
+	
+	// Unique Operand Count
+		private int uOperatorCount = 1;
+		private int[] operatorCollection = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // The Length of All Possible Tokens
+		private int spot = 1;
 	
 	// I Got These Tokens From https://checkstyle.sourceforge.io/checks/whitespace/operatorwrap.html#OperatorWrap
 	// They're: +, -, *, /, %, ++, --, ==, !=, >>>, <<<, >, <, >=, <=, ^, |, ||, &&, ^=, +=, -=, /=, *=, %=, >>>=, |=, ||=
@@ -59,6 +64,27 @@ public class OperatorCountCheck extends AbstractCheck{
 	public void visitToken(DetailAST aAST) {
 		// Increase Count
 		operatorCount++;
+		
+		// Check if Symbol is Unique
+		boolean flag = false;
+		
+		for(int element : operatorCollection) {
+			if(element != 1) {
+				if(aAST.getType() == element) {
+					flag = true;
+				}
+			}
+		}
+		
+		// If the Symbol Was Not Found, Increase the Unique Count
+		if(flag == false) {
+			uOperatorCount++;
+			
+			// And Add Type to Collection
+			operatorCollection[spot] = aAST.getType();
+			spot++;
+		}
+				
 	}
 	
 	@Override
@@ -68,8 +94,8 @@ public class OperatorCountCheck extends AbstractCheck{
 
     @Override
     public void finishTree(DetailAST aAST) {
-    	// Logs the Number of Operators at the First Line
-    	log(aAST.getLineNo(), "operatorFinal", operatorCount);
+    	// Logs the Number of Operators/Unique Operators at the First Line
+    	log(aAST.getLineNo(), "operatorFinal", operatorCount, uOperatorCount);
     }
 	
 }
