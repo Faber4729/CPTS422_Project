@@ -48,36 +48,36 @@ public class OperandCountCheck extends AbstractCheck{
 	@Override
     public void visitToken(DetailAST aAST) {
 		// Increase OperandCount
-					operandCount++;
-					
-					// Check if Symbol is Unique
-					boolean flag = false;
+		operandCount++;
+		
+		// Check if Symbol is Unique
+		boolean flag = false;
 
-					// Iterate Through All Operands
-					for(String element : uOperandList) {
-						if(aAST.getText().equals(element)) {
-							// If the Operand Exists, Set Flag to True
-							flag = true;
-						}
-					}
-					
-					// If the Symbol Was Not Found, Increase the Unique Count
-					if(flag == false) {
-						uOperandCount++;
-						
-						// Recreate Unique List
-						String[] newOperandList = new String[uOperandList.length + 1];
-						
-						for (int i = 0; i < uOperandList.length; i++) {
-							newOperandList[i] = uOperandList[i];
-						}
-						
-						// Add Type to Operand Collection
-						newOperandList[newOperandList.length-1] = aAST.getText();
-						
-						// Set List to Modified One
-						uOperandList = newOperandList;
-					}
+		// Iterate Through All Operands
+		for(String element : uOperandList) {
+			if(aAST.getText().equals(element)) {
+				// If the Operand Exists, Set Flag to True
+				flag = true;
+			}
+		}
+		
+		// If the Symbol Was Not Found, Increase the Unique Count
+		if(flag == false) {
+			uOperandCount++;
+			
+			// Recreate Unique List
+			String[] newOperandList = new String[uOperandList.length + 1];
+			
+			for (int i = 0; i < uOperandList.length; i++) {
+				newOperandList[i] = uOperandList[i];
+			}
+			
+			// Add Type to Operand Collection
+			newOperandList[newOperandList.length-1] = aAST.getText();
+			
+			// Set List to Modified One
+			uOperandList = newOperandList;
+		}
     }
 
     @Override
