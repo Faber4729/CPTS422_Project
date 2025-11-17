@@ -2,14 +2,12 @@ package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
-import resources.HalsteadCounts;
-
 public class OperatorCountCheck extends AbstractCheck{
 
-	private int operatorCount = 0;
+	public static int operatorCount = 0;
 	
 	// Unique Operand Count
-	private int uOperatorCount = 0;
+	public static int uOperatorCount = 0;
 	private int[] operatorCollection = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // The Length of All Possible Tokens
 	private int spot = 1;
 	
@@ -97,24 +95,20 @@ public class OperatorCountCheck extends AbstractCheck{
     }
 
     @Override
-    public void finishTree(DetailAST aAST) {
-    	// Sets Counts for Halstead Purposes
-    	HalsteadCounts.setOperands(operatorCount);
-    	HalsteadCounts.setUOperands(uOperatorCount);
-    	
+    public void finishTree(DetailAST aAST) {	
     	// Logs the Number of Operators/Unique Operators at the First Line
     	log(aAST.getLineNo(), "operatorFinal", operatorCount, uOperatorCount);
     }
     
 
-    // For Testing Purposes, Get Counts
-    public int getOperatorCount() {
-    	return this.operatorCount;
+    // For Halstead Purposes, Get Counts
+    public static int getOperatorCount() {
+    	return operatorCount;
     }
     
     // And Get Unique Count
-    public int getUniqueOperatorCount() {
-    	return this.uOperatorCount;
+    public static int getUniqueOperatorCount() {
+    	return uOperatorCount;
     }
 	
 }

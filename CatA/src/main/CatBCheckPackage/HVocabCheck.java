@@ -1,7 +1,8 @@
 package CatBCheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
-import resources.HalsteadCounts;
+
+import CatACheckPackage.*;
 
 public class HVocabCheck extends AbstractCheck {
 	
@@ -24,10 +25,8 @@ public class HVocabCheck extends AbstractCheck {
 	}
 	
     @Override
-    public void finishTree(DetailAST aAST) {
-    	vocab = (HalsteadCounts.getUOperands() + HalsteadCounts.getUOperators());
-    	
+    public void finishTree(DetailAST aAST) {	
     	// Logs the Number of Operators/Operands at the First Line
-    	log(aAST.getLineNo(), "hVocabFinal", vocab);
+    	log(aAST.getLineNo(), "hVocabFinal", (OperandCountCheck.getUniqueOperandCount() + OperatorCountCheck.getUniqueOperatorCount()));
     }
 }

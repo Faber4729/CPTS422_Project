@@ -1,11 +1,10 @@
 package CatBCheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
-import resources.HalsteadCounts;
+
+import CatACheckPackage.*;
 
 public class HLengthCheck extends AbstractCheck {
-	
-	private int length;
 		
 	// I Think This Has to Be an AbstractCheck, But I Don't Think It Needs a Tree
 	@Override
@@ -25,9 +24,7 @@ public class HLengthCheck extends AbstractCheck {
 	
     @Override
     public void finishTree(DetailAST aAST) {
-    	length = (HalsteadCounts.getOperands() + HalsteadCounts.getOperators());
-    	
     	// Logs the Number of Operators/Operands at the First Line
-    	log(aAST.getLineNo(), "hLengthFinal", length);
+    	log(aAST.getLineNo(), "hLengthFinal", (OperandCountCheck.getOperandCount() + OperatorCountCheck.getOperatorCount()));
     }
 }
