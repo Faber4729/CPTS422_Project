@@ -2,14 +2,16 @@ package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
+import resources.HalsteadCounts;
+
 public class OperatorCountCheck extends AbstractCheck{
 
-	private int operatorCount = 1;
+	private int operatorCount = 0;
 	
 	// Unique Operand Count
-		private int uOperatorCount = 1;
-		private int[] operatorCollection = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // The Length of All Possible Tokens
-		private int spot = 1;
+	private int uOperatorCount = 0;
+	private int[] operatorCollection = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // The Length of All Possible Tokens
+	private int spot = 1;
 	
 	// I Got These Tokens From https://checkstyle.sourceforge.io/checks/whitespace/operatorwrap.html#OperatorWrap
 	// They're: +, -, *, /, %, ++, --, ==, !=, >>>, <<<, >, <, >=, <=, ^, |, ||, &&, ^=, +=, -=, /=, *=, %=, >>>=, |=, ||=
@@ -89,13 +91,30 @@ public class OperatorCountCheck extends AbstractCheck{
 	
 	@Override
     public void beginTree(DetailAST aAST) {
-        operatorCount = 0;
+		// Since An Operator is Found, Increase Count at Start of Tree
+        operatorCount = 1;
+        uOperatorCount = 1;
     }
 
     @Override
     public void finishTree(DetailAST aAST) {
+    	// Sets Counts for Halstead Purposes
+    	HalsteadCounts.setOperands(operatorCount);
+    	HalsteadCounts.setUOperands(uOperatorCount);
+    	
     	// Logs the Number of Operators/Unique Operators at the First Line
     	log(aAST.getLineNo(), "operatorFinal", operatorCount, uOperatorCount);
+    }
+    
+
+    // For Testing Purposes, Get Counts
+    public int getOperatorCount() {
+    	return this.operatorCount;
+    }
+    
+    // And Get Unique Count
+    public int getUniqueOperatorCount() {
+    	return this.uOperatorCount;
     }
 	
 }

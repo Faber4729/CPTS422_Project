@@ -2,14 +2,19 @@ package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
+import CatBCheckPackage.HalsteadParent;
+import resources.HalsteadCounts;
+
 public class OperandCountCheck extends AbstractCheck{
+	
+	// Parent Halstead Class For Metrics
+	private HalsteadParent parent;
 
 	// Overall Operand Count
-	private int operandCount = 1;
+	private int operandCount = 0;
 	
 	// Unique Operand Count
-	private int uOperandCount = 1;
-	private String[] uOperandList = new String[0];
+	private int uOperandCount = 0;
 	
 	// These Are All Strings, Variables, True/False, and Numbers
 	// This Also Includes Package Names, Method Names, and main/args in main(string[] args)
@@ -39,56 +44,33 @@ public class OperandCountCheck extends AbstractCheck{
 	
 	@Override
 	public void visitToken(DetailAST aAST) {
-		// Increase OperandCount
-		operandCount++;
-		
-		// Check if Symbol is Unique
-		boolean flag = false;
-
-		// Iterate Through All Operands
-		for(String element : uOperandList) {
-			if(aAST.getText().equals(element)) {
-				// If the Operand Exists, Set Flag to True
-				flag = true;
-			}
-		}
-		
-		// If the Symbol Was Not Found, Increase the Unique Count
-		if(flag == false) {
-			uOperandCount++;
-			
-			// Recreate Unique List
-			String[] newOperandList = new String[uOperandList.length + 1];
-			
-			for (int i = 0; i < uOperandList.length; i++) {
-				newOperandList[i] = uOperandList[i];
-			}
-			
-			// Add Type to Operand Collection
-			newOperandList[newOperandList.length-1] = aAST.getText();
-			
-			// Set List to Modified One
-			uOperandList = newOperandList;
-		}
-		
+		// Add Operand Through Parent
+		parent.addOperand(aAST.getText());
 	}
 	
 	@Override
     public void beginTree(DetailAST aAST) {
-		operandCount = 0;
+		if (getParent() instanceof HalsteadParent) {
+	        parent = (HalsteadParent) getParent();
+	    } else {
+	        throw new IllegalStateException(
+	            "HalsteadOperandCheck must be inside HalsteadParent in checkstyle.xml"
+	        );
+	    }
     }
 
     @Override
     public void finishTree(DetailAST aAST) {
+    	// Get Parent/Count Values
+    	parent = (HalsteadParent) aAST.getParent();
+    	operandCount = parent.getOperands();
+    	uOperandCount = parent.getUOperands();
+    			
     	// Logs the Number of Operands at the First Line
     	log(aAST.getLineNo(), "operandFinal", operandCount, uOperandCount);
-    	
-    	for (int i = 0; i < uOperandList.length; i++) {
-    		log(3, uOperandList[i]);
-    	}
     }
     
-    // For Halstead Purposes, Get Count
+    // For Testing Purposes, Get Counts
     public int getOperandCount() {
     	return this.operandCount;
     }
