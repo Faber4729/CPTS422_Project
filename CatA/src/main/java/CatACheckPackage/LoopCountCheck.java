@@ -47,7 +47,7 @@ public class LoopCountCheck extends AbstractCheck {
 
     // Get Loop Count for Testing Purposes
     public int getLoopCount() {
-    	return this.loopCount;
+    	return loopCount;
     }
 	
 }
