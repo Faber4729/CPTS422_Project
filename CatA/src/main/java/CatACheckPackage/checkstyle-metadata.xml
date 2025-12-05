@@ -35,6 +35,5 @@
 			<alternative-name internal-name="CatACheckPackage.ExpressionCountCheck" />
 		<description>%ExpressionCount.desc</description>
 		</rule-metadata>
-		
 	</rule-group-metadata>
 </checkstyle-metadata>

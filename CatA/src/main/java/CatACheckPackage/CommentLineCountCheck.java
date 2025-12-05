@@ -48,10 +48,9 @@ public class CommentLineCountCheck extends AbstractCheck{
 		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_END) {
 			commentLineCount += aAST.getLineNo() - blockCommentStart;
 			
-			// Add One Line to Account For the End Comment
+			// Add One For Final Line
 			commentLineCount++;
 		}
-		
 	}
 	
 	@Override
@@ -63,5 +62,14 @@ public class CommentLineCountCheck extends AbstractCheck{
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Comments at the First Line
     	log(aAST.getLineNo(), "commentLineFinal", commentLineCount);
+    }
+    
+    // Get Methods For Testing
+    public int getCommentLineCount() {
+    	return commentLineCount;
+    }
+    
+    public int getBlockStart() {
+    	return blockCommentStart;
     }
 }

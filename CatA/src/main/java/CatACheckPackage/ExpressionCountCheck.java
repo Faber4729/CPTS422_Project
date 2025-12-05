@@ -54,5 +54,10 @@ public class ExpressionCountCheck extends AbstractCheck {
 	    	// Logs the Number of Expressions at First Line
 	    	log(aAST.getLineNo(), "expressionFinal", expressionCount);
 	    }
+	    
+	    // Get Method for Testing
+	    public int getExpressionCount() {
+	    	return expressionCount;
+	    }
 		
 	}

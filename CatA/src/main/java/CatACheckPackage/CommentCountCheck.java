@@ -47,9 +47,8 @@ public class CommentCountCheck extends AbstractCheck{
     	log(aAST.getLineNo(), "commentFinal", commentCount);
     }
     
-    // For Testing Purposes, Get Comment Count
+    // Get Comment Count for Testing Purposes
     public int getCommentCount() {
-    	return this.commentCount;
+    	return commentCount;
     }
-
 }
