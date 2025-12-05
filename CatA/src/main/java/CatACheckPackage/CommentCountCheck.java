@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -27,8 +27,7 @@ public class CommentCountCheck extends AbstractCheck{
 	
 	@Override
 	public int[] getRequiredTokens() {
-	// TODO Auto-generated method stub
-	return getAcceptableTokens();
+		return getAcceptableTokens();
 	}
 	
 	@Override
@@ -45,7 +44,11 @@ public class CommentCountCheck extends AbstractCheck{
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Comments at the First Line
-    	log(1, "commentFinal", commentCount);
+    	log(aAST.getLineNo(), "commentFinal", commentCount);
     }
-
+    
+    // Get Comment Count for Testing Purposes
+    public int getCommentCount() {
+    	return commentCount;
+    }
 }

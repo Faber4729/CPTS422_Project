@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -29,19 +29,28 @@ public class CommentLineCountCheck extends AbstractCheck{
 	
 	@Override
 	public int[] getRequiredTokens() {
-	// TODO Auto-generated method stub
-	return getAcceptableTokens();
+		return getAcceptableTokens();
 	}
 	
 	@Override
 	public void visitToken(DetailAST aAST) {
 		// Increase Count If a Single Line Comment
-		commentLineCount++;
+		if(aAST.getType() == TokenTypes.SINGLE_LINE_COMMENT) {
+			commentLineCount++;
+		}
 		
 		// If It's a Block Beginning, Set the Start Variable
+		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_BEGIN) {
+			blockCommentStart = aAST.getLineNo();
+		}
 		
 		// If it's a Block End, Subtract To Get the Line Count
-		
+		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_END) {
+			commentLineCount += aAST.getLineNo() - blockCommentStart;
+			
+			// Add One For Final Line
+			commentLineCount++;
+		}
 	}
 	
 	@Override
@@ -52,6 +61,15 @@ public class CommentLineCountCheck extends AbstractCheck{
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Comments at the First Line
-    	log(1, "commentCountFinal", commentLineCount);
+    	log(aAST.getLineNo(), "commentLineFinal", commentLineCount);
+    }
+    
+    // Get Methods For Testing
+    public int getCommentLineCount() {
+    	return commentLineCount;
+    }
+    
+    public int getBlockStart() {
+    	return blockCommentStart;
     }
 }

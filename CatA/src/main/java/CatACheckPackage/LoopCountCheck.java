@@ -1,4 +1,4 @@
-package java;
+package CatACheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
@@ -9,10 +9,12 @@ public class LoopCountCheck extends AbstractCheck {
 	
 	@Override
 	public int[] getAcceptableTokens() {
-	// Gets All for, foreach, and while Tokens
+	// Gets All for, foreach, do-while, and while Tokens
 	return new int[] {TokenTypes.FOR_CONDITION,
+			TokenTypes.LITERAL_FOR,
 			TokenTypes.FOR_EACH_CLAUSE,
-			TokenTypes.LITERAL_WHILE};
+			TokenTypes.LITERAL_WHILE,
+			TokenTypes.DO_WHILE};
 	}
 	
 	@Override
@@ -22,8 +24,7 @@ public class LoopCountCheck extends AbstractCheck {
 	
 	@Override
 	public int[] getRequiredTokens() {
-	// TODO Auto-generated method stub
-	return getAcceptableTokens();
+		return getAcceptableTokens();
 	}
 	
 	
@@ -34,15 +35,19 @@ public class LoopCountCheck extends AbstractCheck {
 	}	
 	
 	@Override
-    public void beginTree(DetailAST rootAST) {
+    public void beginTree(DetailAST aAST) {
         loopCount = 0;
     }
 
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Loops at the First Line
-    	log(1, "loopFinal", loopCount);
+    	log(aAST.getLineNo(), "loopFinal", loopCount);
     }
 
+    // Get Loop Count for Testing Purposes
+    public int getLoopCount() {
+    	return loopCount;
+    }
 	
 }

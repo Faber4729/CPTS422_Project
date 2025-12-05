@@ -6,35 +6,34 @@
 	<rule-group-metadata name="Category A Checks" priority="1600">
 		<description>%CatAChecks.desc</description>
 		
-		<rule-metadata name="CommentCount.name" internal-name="CommentCount" parent="TreeWalker">
+		<rule-metadata name="%CommentCount.name" internal-name="CommentCount" parent="TreeWalker">
 			<alternative-name internal-name="CatACheckPackage.CommentCountCheck" />
 		<description>%CommentCount.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="CommentLineCount.name" internal-name="CommentLineCount" parent="TreeWalker">
+		<rule-metadata name="%CommentLineCount.name" internal-name="CommentLineCount" parent="TreeWalker">
 			<alternative-name internal-name="CatACheckPackage.CommentLineCountCheck" />
 		<description>%CommentLineCount.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="LoopCount.name" internal-name="LoopCount" parent="TreeWalker">
+		<rule-metadata name="%LoopCount.name" internal-name="LoopCount" parent="TreeWalker">
 			<alternative-name internal-name="CatACheckPackage.LoopCountCheck" />
 		<description>%LoopCount.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="OperatorCount.name" internal-name="OperatorCount" parent="TreeWalker">
+		<rule-metadata name="%OperatorCount.name" internal-name="OperatorCount" parent="TreeWalker">
 			<alternative-name internal-name="CatACheckPackage.OperatorCountCheck" />
 		<description>%OperatorCount.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="OperandCount.name" internal-name="OperandCount" parent="TreeWalker">
+		<rule-metadata name="%OperandCount.name" internal-name="OperandCount" parent="TreeWalker">
 			<alternative-name internal-name="CatACheckPackage.OperandCountCheck" />
 		<description>%OperandCount.desc</description>
 		</rule-metadata>
 		
-		<rule-metadata name="ExpressionCount.name" internal-name="ExpressionCount" parent="TreeWalker">
+		<rule-metadata name="%ExpressionCount.name" internal-name="ExpressionCount" parent="TreeWalker">
 			<alternative-name internal-name="CatACheckPackage.ExpressionCountCheck" />
 		<description>%ExpressionCount.desc</description>
 		</rule-metadata>
-		
 	</rule-group-metadata>
 </checkstyle-metadata>

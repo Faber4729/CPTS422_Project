@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
   <local-check-config name="CatAConfig" location="internal_config_1758460990420.xml" type="internal" description="">
     <property name="OperatorCount" value="CatA.CatACheckPackage.OperatorCountCheck"/>
   </local-check-config>
-  <fileset name="all" enabled="true" check-config-name="Google Checks" local="false">
+  <fileset name="all" enabled="false" check-config-name="Google Checks" local="false">
     <file-match-pattern match-pattern="." include-pattern="true"/>
+  </fileset>
+  <fileset name="src/main/*" enabled="true" check-config-name="Google Checks" local="false">
+    <file-match-pattern match-pattern=".java$" include-pattern="false"/>
+    <file-match-pattern match-pattern="src.main" include-pattern="true"/>
   </fileset>
 </fileset-config>
