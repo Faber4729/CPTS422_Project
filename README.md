@@ -1,18 +1,5 @@
-An organized document/report detailed the test cases, test
-results, and coverage percentage.
-➢ For each Check class, identify the percentage of lines/branches that are
-covered. You may simply use Eclipse built-in coverage tool for line
-coverage; and you might want to count the branch coverage. (e.g.
-22/24 lines covered, 4t 3f/4 branches covered – once again, remember
-branch coverage requires you to test both True and False)
-✓ Note that the Eclipse built-in coverage tool computes “branch
-coverage” in a slightly different way (it’s actually conditional
-coverage)
-✓ So, when you are using the tool, count the “branch coverage” by
-yourselves, as your percentage is likely higher or equal to what the
-tool will show 6
-An organized document/report detailed the test cases, test
-results, and coverage percentage. (cont.)
+Test results:
+  70/70 tests ran, completed, and came back positive/without failure or error.
 
 Explanation of Incomplete Coverage:
 
@@ -32,45 +19,56 @@ Explanation of Incomplete Coverage:
   values themselves are correct on their own.
 
 CommentCountCheck
-  Line coverage: 52.8%
-  Branch coverage: 
+  Overall coverage: 52.8%
+  Line coverage: 53.8%
+  Branch coverage: 0/0 branches covered
 
 CommentLineCountCheck
-  Line coverage: 52.8%
-  Branch coverage: 
+  Overall coverage: 33.7%
+  Line coverage: 33.3%
+  Branch coverage: 3t 3f/3 branches covered
 
 ExpressionCountCheck
-  Line coverage: 52.8%
-  Branch coverage: 
+  Overall coverage: 47.3%
+  Line coverage: 33.3%
+  Branch coverage: 1t 1f/1 branches covered
   
 LoopCountCheck
-  Line coverage: 52.8%
-  Branch coverage: 
+  Overall coverage: 55.6%
+  Line coverage: 41.7%
+  Branch coverage: 0/0 branches covered
 
 OperandCountCheck
-  Line coverage: 52.8%
-  Branch coverage: 
+  Overall coverage: 40.1%
+  Line coverage: 41.9%
+  Branch coverage: 2t 2f/2 branches covered
 
 OperatorCountCheck
-  Line coverage: 52.8%
-  Branch coverage: 
+  Overall coverage: 78.3%
+  Line coverage: 46.7%
+  Branch coverage: 3t 3f/3 branches covered
 
 HalsteadLengthCheck
-  Line coverage: 61.8%
-  Branch coverage: 
+  Overall coverage: 61.8%
+  Line coverage: 71.4%
+  Branch coverage: 0/0 branches covered
 
 HalsteadVocabularyCheck
-  Line coverage: 61.8%
-  Branch coverage: 
+  Overall coverage: 61.8%
+  Line coverage: 71.4%
+  Branch coverage: 0/0 branches covered
 
 HalsteadDifficultyCheck
-  Line coverage: 67.5%
-  Branch coverage: 
+  Overall coverage: 67.5%
+  Line coverage: 71.4%
+  Branch coverage: 0/0 branches covered
 
 HalsteadEffortCheck
-  Line coverage: 60.6%
-  Branch coverage: 
+  Overall coverage: 60.6%
+  Line coverage: 71.4%
+  Branch coverage: 0/0 branches covered
 
 HalsteadVolumeCheck
-  Line coverage: 69.8%
-  Branch coverage: 
+  Overall coverage: 69.8%
+  Line coverage: 71.4%
+  Branch coverage: 0/0 branches covered
