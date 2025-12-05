@@ -4,10 +4,10 @@ import com.puppycrawl.tools.checkstyle.api.*;
 
 public class OperatorCountCheck extends AbstractCheck{
 
-	public static int operatorCount = 0;
+	private static int operatorCount = 0;
 	
 	// Unique Operand Count
-	public static int uOperatorCount = 0;
+	private static int uOperatorCount = 0;
 	private int[] operatorCollection = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // The Length of All Possible Tokens
 	private int spot = 1;
 	
@@ -84,14 +84,13 @@ public class OperatorCountCheck extends AbstractCheck{
 			operatorCollection[spot] = aAST.getType();
 			spot++;
 		}
-				
 	}
 	
 	@Override
     public void beginTree(DetailAST aAST) {
-		// Since An Operator is Found, Increase Count at Start of Tree
-        operatorCount = 1;
-        uOperatorCount = 1;
+		// Set Counts to 0
+        operatorCount = 0;
+        uOperatorCount = 0;
     }
 
     @Override
@@ -101,7 +100,16 @@ public class OperatorCountCheck extends AbstractCheck{
     }
     
 
-    // For Halstead Purposes, Get Counts
+    // For Halstead Purposes, Set/Get Counts
+    public static void setOperatorCount(int num) {
+    	operatorCount = num;
+    }
+    
+    // And Get Unique Count
+    public static void setUniqueOperatorCount(int num) {
+    	 uOperatorCount = num;
+    }
+    
     public static int getOperatorCount() {
     	return operatorCount;
     }

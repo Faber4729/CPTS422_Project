@@ -3,11 +3,10 @@ package CatBCheckPackage;
 import com.puppycrawl.tools.checkstyle.api.*;
 
 import CatACheckPackage.*;
+import CatBCheckPackage.*;
 
-public class HDifficultyCheck extends AbstractCheck {
-
-	private double diff;
-		
+public class HEffortCheck extends AbstractCheck {
+	
 	// I Think This Has to Be an AbstractCheck, But I Don't Think It Needs a Tree
 	@Override
 	public int[] getAcceptableTokens() {
@@ -25,16 +24,13 @@ public class HDifficultyCheck extends AbstractCheck {
 	}
 	
     @Override
-    public void finishTree(DetailAST aAST) {
-    	
-    	diff = getDiff();
-    	
+    public void finishTree(DetailAST aAST) {    	
     	// Logs the Number of Operators/Operands at the First Line
-    	log(aAST.getLineNo(), "hDifficultyFinal", diff);
+    	log(aAST.getLineNo(), "hEffortFinal", getEffort());
     }
     
-    // Method For Calculating Difficulty
-    public static double getDiff() {
-    	return (OperandCountCheck.getOperandCount() * (0.5 * (OperatorCountCheck.getUniqueOperatorCount()))) / OperandCountCheck.getUniqueOperandCount();
+    // Get Effort for Testing
+    public static double getEffort() {
+    	return HDifficultyCheck.getDiff() * HVolCheck.getVolume();    
     }
 }

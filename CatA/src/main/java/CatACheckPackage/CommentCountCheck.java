@@ -49,6 +49,6 @@ public class CommentCountCheck extends AbstractCheck{
     
     // Get Comment Count for Testing Purposes
     public int getCommentCount() {
-    	return this.commentCount;
+    	return commentCount;
     }
 }

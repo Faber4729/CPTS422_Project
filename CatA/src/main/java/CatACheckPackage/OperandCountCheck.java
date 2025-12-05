@@ -6,10 +6,10 @@ public class OperandCountCheck extends AbstractCheck{
 
 	// These are Static So the Halstead Checks Can Reference Them
 	// Overall Operand Count
-	public static int operandCount = 0;
+	private static int operandCount = 0;
 	
 	// Unique Operand Count
-	public static int uOperandCount = 0;
+	private static int uOperandCount = 0;
 	private String[] uOperandList = new String[0];
 	
 	// These Are All Strings, Variables, True/False, and Numbers
@@ -25,7 +25,6 @@ public class OperandCountCheck extends AbstractCheck{
 			TokenTypes.LITERAL_TRUE,
 			TokenTypes.LITERAL_FALSE,
 		};
-
 	}
 	
 	@Override
@@ -40,9 +39,9 @@ public class OperandCountCheck extends AbstractCheck{
 	
 	@Override
 	public void beginTree(DetailAST aAST) {
-		// Set OperandCounts to 1 For Initial Root
-		operandCount = 1;
-		uOperandCount = 1;
+		// Set OperandCounts to 0
+		operandCount = 0;
+		uOperandCount = 0;
 	}
 	
 	@Override
@@ -86,7 +85,15 @@ public class OperandCountCheck extends AbstractCheck{
     	log(aAST.getLineNo(), "operandFinal", operandCount, uOperandCount);
     }
     
-    // For Halstead Purposes, Get Counts
+    // For Halstead Purposes, Get/Set Counts
+    public static void setOperandCount(int num) {
+    	 operandCount = num;
+    }
+    
+    public static void setUniqueOperandCount(int num) {
+    	 uOperandCount = num;
+    }
+    
     public static int getOperandCount() {
     	return operandCount;
     }

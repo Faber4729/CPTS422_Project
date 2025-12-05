@@ -11,6 +11,7 @@ public class LoopCountCheck extends AbstractCheck {
 	public int[] getAcceptableTokens() {
 	// Gets All for, foreach, do-while, and while Tokens
 	return new int[] {TokenTypes.FOR_CONDITION,
+			TokenTypes.LITERAL_FOR,
 			TokenTypes.FOR_EACH_CLAUSE,
 			TokenTypes.LITERAL_WHILE,
 			TokenTypes.DO_WHILE};

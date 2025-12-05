@@ -2,14 +2,9 @@ package CatBCheckPackage;
 
 import com.puppycrawl.tools.checkstyle.api.*;
 
-import CatACheckPackage.OperandCountCheck;
-import CatACheckPackage.OperatorCountCheck;
+import CatACheckPackage.*;
 
-public class HEffortCheck extends AbstractCheck {
-	
-	private double volume;
-	private double diff;
-	private double effort;
+public class HLengthCheck extends AbstractCheck {
 		
 	// I Think This Has to Be an AbstractCheck, But I Don't Think It Needs a Tree
 	@Override
@@ -29,14 +24,14 @@ public class HEffortCheck extends AbstractCheck {
 	
     @Override
     public void finishTree(DetailAST aAST) {
-    	
-    	volume = HVolCheck.getVolume();
-    	
-    	diff = HDifficultyCheck.getDiff();
-    	
-    	effort = diff * volume;
-    	
     	// Logs the Number of Operators/Operands at the First Line
-    	log(aAST.getLineNo(), "hEffortFinal", effort);
+    	log(aAST.getLineNo(), "hLengthFinal", getLength());
+    }
+    
+    // Get Length for Testing
+    public static double getLength() {
+    	return OperandCountCheck.getOperandCount() + OperatorCountCheck.getOperatorCount();
     }
 }
+
+

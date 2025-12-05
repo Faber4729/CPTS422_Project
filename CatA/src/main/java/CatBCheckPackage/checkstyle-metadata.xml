@@ -30,6 +30,5 @@
 			<alternative-name internal-name="CatBCheckPackage.HEffortCheck" />
 		<description>%hEffort.desc</description>
 		</rule-metadata>
-		
 	</rule-group-metadata>
 </checkstyle-metadata>

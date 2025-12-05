@@ -4,7 +4,7 @@ import com.puppycrawl.tools.checkstyle.api.*;
 
 import CatACheckPackage.*;
 
-public class HLengthCheck extends AbstractCheck {
+public class HDifficultyCheck extends AbstractCheck {
 		
 	// I Think This Has to Be an AbstractCheck, But I Don't Think It Needs a Tree
 	@Override
@@ -25,6 +25,10 @@ public class HLengthCheck extends AbstractCheck {
     @Override
     public void finishTree(DetailAST aAST) {
     	// Logs the Number of Operators/Operands at the First Line
-    	log(aAST.getLineNo(), "hLengthFinal", (OperandCountCheck.getOperandCount() + OperatorCountCheck.getOperatorCount()));
+    	log(aAST.getLineNo(), "hDifficultyFinal", getDiff());
+    }
+    
+    public static double getDiff() {
+    	return (OperandCountCheck.getOperandCount() * (0.5 * OperatorCountCheck.getUniqueOperatorCount())) / OperandCountCheck.getUniqueOperandCount();
     }
 }

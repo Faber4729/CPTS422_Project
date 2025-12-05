@@ -4,10 +4,8 @@ import com.puppycrawl.tools.checkstyle.api.*;
 
 import CatACheckPackage.*;
 
-public class HVocabCheck extends AbstractCheck {
-	
-	private int vocab;
-	
+public class HVolCheck extends AbstractCheck {
+		
 	// I Think This Has to Be an AbstractCheck, But I Don't Think It Needs a Tree
 	@Override
 	public int[] getAcceptableTokens() {
@@ -25,8 +23,13 @@ public class HVocabCheck extends AbstractCheck {
 	}
 	
     @Override
-    public void finishTree(DetailAST aAST) {	
+    public void finishTree(DetailAST aAST) {
     	// Logs the Number of Operators/Operands at the First Line
-    	log(aAST.getLineNo(), "hVocabFinal", (OperandCountCheck.getUniqueOperandCount() + OperatorCountCheck.getUniqueOperatorCount()));
+    	log(aAST.getLineNo(), "hVolumeFinal", getVolume());
+    }
+    
+    // Method For Calculating Volume
+    public static double getVolume() {
+    	return (OperandCountCheck.getOperandCount() + OperatorCountCheck.getOperatorCount()) * (Math.log((OperandCountCheck.getUniqueOperandCount() + OperatorCountCheck.getUniqueOperatorCount())) / Math.log(2));
     }
 }
