@@ -143,8 +143,11 @@ public class LoopCountTest {
 			// Run Begin Tree
 			LCC.beginTree(mockAST);	
 			
+			// Create New Int and Compare
+			int LC = 0;
+			
 			// Confirm Initial Value is 0
-			assertEquals(0, LCC.getLoopCount());
+			assertEquals(LC, LCC.getLoopCount());
 			
 			// Run Visit Token A Few Times
 			LCC.visitToken(mockAST);
@@ -153,6 +156,8 @@ public class LoopCountTest {
 			LCC.visitToken(mockAST);
 			LCC.visitToken(mockAST);
 			
-			assertEquals(5, LCC.getLoopCount());
+			LC = 5;
+			
+			assertEquals(LC, LCC.getLoopCount());
 		}
 }
