@@ -22,7 +22,9 @@ Tests:
 **ExpressionCountCheck**
 <br>  Code: Gets all lines with at least one of: +, -, *, %, /; each line is counted as 1, no matter how many of these characters are in it.
 > I assuemd that an expression would be kept on one line and only use basic arithmetic values in it. I did not count something like i += 1 as an expression.
-<Tests:
+
+Tests:
+
   
 **LoopCountCheck**
 <br>  Code: Gets all tokens with the text "for", "foreach", "while", and "do while".
@@ -40,7 +42,7 @@ Tests:
 
 **OperatorCountCheck**
 <br>Code: Gets all tokens included in: +, -, *, /, %, ++, --, ==, !=, >>>, <<<, >, <, >=, <=, ^, |, ||, &&, ^=, +=, -=, /=, *=, %=, >>>=, |=, ||=. Also, records the amount of unique characters from that list, by comparing each new token to previously found ones.
-> For the operators, this list isn't exhaustive, but I defined the operators as anything that either was part of an equation, or did something to edit or change some previous value.
+> For the operators, this list isn't exhaustive, but I defined the operators as anything that either was part of an equation, or did something to edit or change some previous value. Also, I assumed things like () and [] weren't operators, and only used arithmetic, logical, and bitwise operators in this list.
 
 Tests:
 
