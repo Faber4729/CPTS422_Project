@@ -2,7 +2,7 @@
 
 **CommentCountCheck**
 <br>  Code: Gets the total number of // and /* tokens.
-> I assuemd all comments started with /* would finish, and count as a comment. I also assumed there would be no comments such as:
+> I assumed all comments started with /* would finish, and count as a comment. I also assumed there would be no comments such as:
 > // example // I like adding these //
 
  Tests:
@@ -48,10 +48,10 @@ Tests:
 
 
 **HalsteadChecks**
-<br>Code: Each Halstead Check differs only in their methods for getting/calculating the metric values; the Halstead length gets the toal amount of operands and operators, the vocabulary is the total knumber of unique operators and operands, the volume is the Halstead length * log_2(vocabulary), the difficulty is (0.5(unique operators) * total operators) / unique operators, and the effort is the difficulty * the volume.
+<br>Code: Each Halstead Check differs only in their methods for getting/calculating the metric values; the Halstead length gets the total amount of operands and operators, the vocabulary is the total number of unique operators and operands, the volume is the Halstead length * log_2(vocabulary), the difficulty is (0.5(unique operators) * total operators) / unique operators, and the effort is the difficulty * the volume.
 >    The operands and operators were calculated through the variables from the Operand/Operator checks.
 
-Tests: Each of these checks had simple tests, that confirmed their implimented getAcceptableTokens(), getRequiredTokens(), and getDefaultTokens() all returned their Token arrays ({0}) as expected. They also had various finishTree() and getMethod() tests that evaluated if mock values calculated correctly, and were updated correctly.
+Tests: Each of these checks had simple tests, that confirmed their implemented getAcceptableTokens(), getRequiredTokens(), and getDefaultTokens() all returned their Token arrays ({0}) as expected. They also had various finishTree() and getMethod() tests that evaluated if mock values calculated correctly, and were updated correctly.
 
 
 
