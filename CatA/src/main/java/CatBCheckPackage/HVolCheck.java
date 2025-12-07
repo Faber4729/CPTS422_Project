@@ -30,6 +30,6 @@ public class HVolCheck extends AbstractCheck {
     
     // Method For Calculating Volume
     public static double getVolume() {
-    	return (OperandCountCheck.getOperandCount() + OperatorCountCheck.getOperatorCount()) * (Math.log((OperandCountCheck.getUniqueOperandCount() + OperatorCountCheck.getUniqueOperatorCount())) / Math.log(2));
+    	return (HLengthCheck.getLength()) * (Math.log(HVocabCheck.getVocab()) / Math.log(2));
     }
 }

@@ -79,8 +79,10 @@ public class CommentCountTest {
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = (new CommentCountCheck());
 		
+		DetailAST mockAST = null;
+		
 		// Create a Mock AST For Visiting Token
-		DetailAST mockAST = mock(DetailAST.class); 
+		//DetailAST mockAST = mock(DetailAST.class); 
 		
 		// Confirm Comment Count is Initially 0
 		assertEquals(0, spyCommentCountCheck.getCommentCount());
@@ -108,7 +110,7 @@ public class CommentCountTest {
 		CommentCountCheck spyCommentCountCheck = (new CommentCountCheck());
 		
 		// Create a Mock AST For Tree
-		DetailAST mockAST = mock(DetailAST.class); 
+		DetailAST mockAST = null;
 		
 		// Confirm Comment Count is Initially 0
 		assertEquals(0, spyCommentCountCheck.getCommentCount());	
@@ -140,7 +142,7 @@ public class CommentCountTest {
 		spyCommentCountCheck.visitToken(mockAST);
 		spyCommentCountCheck.visitToken(mockAST);
 		spyCommentCountCheck.visitToken(mockAST);
-		
+
 		// Assert that the Line Number is Still 0 and CommentCount is 3
 		assertEquals(0, mockAST.getLineNo());
 		assertEquals(3, spyCommentCountCheck.getCommentCount());
