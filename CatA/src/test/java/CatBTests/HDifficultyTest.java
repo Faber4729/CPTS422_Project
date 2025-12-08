@@ -105,4 +105,22 @@ public class HDifficultyTest {
 		// Check that Value Calculated Properly		
 		assertEquals(diff, HD.getDiff());
 	}
+	
+	// Test Get Difficulty with 0
+	@Test
+	public void testGetDiff0(){
+		// Create new HDiff
+		HDifficultyCheck HD = (new HDifficultyCheck());
+			
+		// Create New Double and Compare
+		double diff = 0;
+		
+		// Set Variables for Operator Counts
+		OperandCountCheck.setOperandCount(0);
+		OperatorCountCheck.setUniqueOperatorCount(0);
+		OperandCountCheck.setUniqueOperandCount(0);
+
+		// Check that Value Calculated Properly		
+		assertEquals(diff, HD.getDiff());
+	}
 }

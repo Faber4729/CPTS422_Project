@@ -131,6 +131,24 @@ public class LoopCountTest {
 			assertEquals(3, LCC.getLoopCount());
 		}
 		
+		// Finish Tree With No Input
+		@Test
+		public void testFinishTreeNull(){
+			// Create Check
+			LoopCountCheck LCC = (new LoopCountCheck());
+			
+			// Create a Mock AST For Beginning Tree
+			DetailAST mockAST = null; 
+
+			// Set Return for Tree Line Number to be 0
+			//when(mockAST.getLineNo()).thenReturn(0);
+			
+			// No Return is Possible on Null AST
+
+			// Assert that Count is 0
+			assertEquals(0, LCC.getLoopCount());
+		}
+		
 		// Check Get Method
 		@Test
 		public void testLoopCountGet() {

@@ -148,6 +148,24 @@ public class CommentCountTest {
 		assertEquals(3, spyCommentCountCheck.getCommentCount());
 	}
 	
+	// Finish Tree With No Input
+	@Test
+	public void testFinishTreeNull(){
+		// Create spyCommentCountCheck
+		CommentCountCheck spyCommentCountCheck = (new CommentCountCheck());
+		
+		// Create a Mock AST For Beginning Tree
+		DetailAST mockAST = null; 
+
+		// Set Return for Tree Line Number to be 0
+		//when(mockAST.getLineNo()).thenReturn(0);
+		
+		// No Return is Possible on Null AST
+
+		// Assert that Comment Count is 0
+		assertEquals(0, spyCommentCountCheck.getCommentCount());
+	}
+	
 	// Check Get Method
 	@Test
 	public void testGet() {

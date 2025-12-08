@@ -119,7 +119,7 @@ public class CommentLineCountTest {
 		CommentLineCountCheck CLCC = (new CommentLineCountCheck());
 		
 		// Create a Mock AST For Tree
-		DetailAST mockAST = mock(DetailAST.class); 
+		DetailAST mockAST = null; 
 		
 		// Confirm Comment Count is Initially 0
 		assertEquals(0, CLCC.getCommentLineCount());	
@@ -155,6 +155,24 @@ public class CommentLineCountTest {
 		// Assert that the Line Number is Still 0 and CommentLineCount is 3
 		assertEquals(0, mockAST.getLineNo());
 		assertEquals(3, CLCC.getCommentLineCount());
+	}
+	
+	// Finish Tree With No Input
+	@Test
+	public void testFinishTreeNull(){
+		// Create Check
+		CommentLineCountCheck CLCC = (new CommentLineCountCheck());
+		
+		// Create a Mock AST For Beginning Tree
+		DetailAST mockAST = null; 
+
+		// Set Return for Tree Line Number to be 0
+		//when(mockAST.getLineNo()).thenReturn(0);
+		
+		// No Return is Possible on Null AST
+
+		// Assert that Line Count is 0
+		assertEquals(0, CLCC.getCommentLineCount());
 	}
 	
 	// Check Get Methods

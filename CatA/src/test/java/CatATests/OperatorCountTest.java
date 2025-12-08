@@ -242,6 +242,28 @@ public class OperatorCountTest {
 			assertEquals(1, OCC.getUniqueOperatorCount());
 		}
 		
+		// Finish Tree With No Input
+		@Test
+		public void testFinishTreeNull(){
+			// Create Check
+			OperatorCountCheck OCC = (new OperatorCountCheck());
+			
+			// Create a Mock AST For Beginning Tree
+			DetailAST mockAST = null; 
+			
+			// Run BeginTree to Reset Values
+			OCC.beginTree(mockAST);
+
+			// Set Return for Tree Line Number to be 0
+			//when(mockAST.getLineNo()).thenReturn(0);
+			
+			// No Return is Possible on Null AST
+
+			// Assert that Counts are both 0
+			assertEquals(0, OCC.getOperatorCount());
+			assertEquals(0, OCC.getUniqueOperatorCount());
+		}
+		
 		// Check Get/Set Methods
 		@Test
 		public void testCountSetGet() {

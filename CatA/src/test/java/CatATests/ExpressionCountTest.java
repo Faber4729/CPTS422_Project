@@ -148,6 +148,24 @@ public class ExpressionCountTest {
 			assertEquals(1, ECC.getExpressionCount());
 		}
 		
+		// Finish Tree With No Input
+		@Test
+		public void testFinishTreeNull(){
+			// Create Check
+			ExpressionCountCheck ECC = (new ExpressionCountCheck());
+			
+			// Create a Mock AST For Beginning Tree
+			DetailAST mockAST = null; 
+
+			// Set Return for Tree Line Number to be 0
+			//when(mockAST.getLineNo()).thenReturn(0);
+			
+			// No Return is Possible on Null AST
+
+			// Assert that Count is 0
+			assertEquals(0, ECC.getExpressionCount());
+		}
+		
 		// Check Get Method
 		@Test
 		public void testGet() {

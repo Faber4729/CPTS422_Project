@@ -28,14 +28,10 @@
   <configuration>
     <targetClasses>
       <param>CatACheckPackage.*</param>
-    </targetClasses>
-    <targetTests>
-      <param>CatATests.*</param>
-    </targetTests>
-    <targetClasses>
       <param>CatBCheckPackage.*</param>
     </targetClasses>
     <targetTests>
+      <param>CatATests.*</param>
       <param>CatBTests.*</param>
     </targetTests>
   </configuration>

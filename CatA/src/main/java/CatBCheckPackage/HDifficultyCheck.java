@@ -29,6 +29,11 @@ public class HDifficultyCheck extends AbstractCheck {
     }
     
     public static double getDiff() {
+    	// To Prevent NaN
+    	if(OperandCountCheck.getUniqueOperandCount() == 0) {
+    		return 0;
+    	}
+    	
     	return (OperandCountCheck.getOperandCount() * (0.5 * OperatorCountCheck.getUniqueOperatorCount())) / OperandCountCheck.getUniqueOperandCount();
     }
 }

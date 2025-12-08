@@ -174,6 +174,28 @@ public class OperandCountTest {
 			assertEquals(1, OCC.getUniqueOperandCount());
 		}
 		
+		// Finish Tree With No Input
+		@Test
+		public void testFinishTreeNull(){
+			// Create Check
+			OperandCountCheck OCC = (new OperandCountCheck());
+			
+			// Create a Mock AST For Beginning Tree
+			DetailAST mockAST = null; 
+			
+			// Run BeginTree to Reset Values
+			OCC.beginTree(mockAST);
+
+			// Set Return for Tree Line Number to be 0
+			//when(mockAST.getLineNo()).thenReturn(0);
+			
+			// No Return is Possible on Null AST
+
+			// Assert that Counts are both 0
+			assertEquals(0, OCC.getOperandCount());
+			assertEquals(0, OCC.getUniqueOperandCount());
+		}
+		
 		// Check Get/Set Methods
 		@Test
 		public void testCountSetGet() {
