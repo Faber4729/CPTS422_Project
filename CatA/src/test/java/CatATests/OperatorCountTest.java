@@ -202,7 +202,10 @@ public class OperatorCountTest {
 			OperatorCountCheck OCC = (new OperatorCountCheck());
 			
 			// Create a Mock AST For Tree
-			DetailAST mockAST = mock(DetailAST.class); 
+			DetailAST mockAST = mock(DetailAST.class);
+			
+			// Set AST to Be /
+			when(mockAST.getType()).thenReturn(TokenTypes.DIV);
 			
 			// Run Begin Tree
 			OCC.beginTree(mockAST);

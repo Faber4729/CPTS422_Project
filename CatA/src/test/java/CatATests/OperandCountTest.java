@@ -24,7 +24,8 @@ public class OperandCountTest {
 			OperandCountCheck OCC = (new OperandCountCheck());
 
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.IDENT,
+			int[] tokenArray = new int [] {
+					TokenTypes.EXPR, 
 					TokenTypes.NUM_DOUBLE,
 					TokenTypes.NUM_FLOAT,
 					TokenTypes.NUM_LONG,
@@ -45,7 +46,8 @@ public class OperandCountTest {
 			OperandCountCheck OCC = (new OperandCountCheck());
 
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.IDENT,
+			int[] tokenArray = new int [] {
+					TokenTypes.EXPR, 
 					TokenTypes.NUM_DOUBLE,
 					TokenTypes.NUM_FLOAT,
 					TokenTypes.NUM_LONG,
@@ -66,7 +68,8 @@ public class OperandCountTest {
 			OperandCountCheck OCC = (new OperandCountCheck());
 			
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.IDENT,
+			int[] tokenArray = new int [] {
+					TokenTypes.EXPR, 
 					TokenTypes.NUM_DOUBLE,
 					TokenTypes.NUM_FLOAT,
 					TokenTypes.NUM_LONG,
@@ -130,6 +133,10 @@ public class OperandCountTest {
 			
 			// Create a Mock AST For Tree
 			DetailAST mockAST = mock(DetailAST.class); 
+			
+			// Set AST To Be Literal True
+			when(mockAST.getType()).thenReturn(TokenTypes.LITERAL_TRUE);
+			when(mockAST.getText()).thenReturn("LITERAL_TRUE");
 			
 			// Run Begin Tree
 			OCC.beginTree(mockAST);

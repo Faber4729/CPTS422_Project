@@ -1,5 +1,7 @@
 package BlackboxTests;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyByte;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -90,15 +92,21 @@ class EngineTest {
 			
 				
 			// Verify/Print Results
-			if(currFile.getName().split("Test")[1].equals("Test1")){
-				assertEquals(1, HDiff.getDiff());
+			if(currFile.getName().contains("1")){
+				assertTrue(HLength.getLength() == 12);
+				assertTrue(HDiff.getDiff() == 0.8);
+				assertTrue(HVocab.getVocab() == 6);
+				assertTrue(HVol.getVolume() == 12 * (Math.log(6)/Math.log(2)));
+				assertTrue(HEffort.getEffort() == 0.8 * 12 * (Math.log(6)/Math.log(2)));
 				System.out.println(currFile.getName() + " Done!");
 			}
 			else{
-				//assertTrue(results.get("loopingStatements") == 3);
+				assertTrue(HLength.getLength() == 9);
+				assertTrue(HDiff.getDiff() == 0.75);
+				assertTrue(HVocab.getVocab() == 5);
+				assertTrue(HVol.getVolume() == 9 * (Math.log(5)/Math.log(2)));
+				assertTrue(Math.round(HEffort.getEffort()) == Math.round(0.75 * 9 * (Math.log(5)/Math.log(2))));
 				System.out.println(currFile.getName() + " Done!");
-				
-				
 			}
 		}
 				
@@ -115,19 +123,19 @@ class EngineTest {
 				operator.finishTree(root);
 				
 				// Verify/Print Results
-				if(currFile.getName().split("Test")[1].equals("Test1")) {
+				if(currFile.getName().contains("1")) {
 					assertTrue(operator.getOperatorCount() == 1);
 					assertTrue(operator.getUniqueOperatorCount() == 1);
 					System.out.println(currFile.getName() + " Done!");
 				}
-				if(currFile.getName().split("Test")[1].equals("Test2")) {
-					assertTrue(operator.getOperatorCount() == 10);
-					assertTrue(operator.getUniqueOperatorCount() == 6);
+				if(currFile.getName().contains("2")) {
+					assertTrue(operator.getOperatorCount() == 4);
+					assertTrue(operator.getUniqueOperatorCount() == 3);
 					System.out.println(currFile.getName() + " Done!");
 				}
 				else {
-					assertTrue(operator.getOperatorCount() == 2);
-					assertTrue(operator.getUniqueOperatorCount() == 2);
+					assertTrue(operator.getOperatorCount() == 1);
+					assertTrue(operator.getUniqueOperatorCount() == 1);
 					System.out.println(currFile.getName() + " Done!");
 				}
 			}
@@ -142,14 +150,14 @@ class EngineTest {
 				operand.finishTree(root);
 				
 				// Verify/Print Results
-				if(currFile.getName().split("Test")[1].equals("Test1")) {
-					assertTrue(operand.getOperandCount() == 0);
-					assertTrue(operand.getUniqueOperandCount() == 0);
+				if(currFile.getName().contains("1")) {
+					assertTrue(operand.getOperandCount() == 4);
+					assertTrue(operand.getUniqueOperandCount() == 3);
 					System.out.println(currFile.getName() + " Done!");
 				}
 				else {
-					assertTrue(operand.getOperandCount() == 4);
-					assertTrue(operand.getUniqueOperandCount() == 2);
+					assertTrue(operand.getOperandCount() == 0);
+					assertTrue(operand.getUniqueOperandCount() == 0);
 					System.out.println(currFile.getName() + " Done!");
 				}
 			}
@@ -180,12 +188,12 @@ class EngineTest {
 				expression.finishTree(root);
 				
 				// Verify/Print Results
-				if(currFile.getName().split("Test")[1].equals("Test1")) {
+				if(currFile.getName().contains("1")) {
 					assertTrue(expression.getExpressionCount() == 1);
 					System.out.println(currFile.getName() + " Done!");
 				}
-				else {
-					assertTrue(expression.getExpressionCount() == 8);
+				else {	
+					assertTrue(expression.getExpressionCount() == 0);
 					System.out.println(currFile.getName() + " Done!");
 				}
 			}
@@ -201,11 +209,11 @@ class EngineTest {
 				commentLine.finishTree(root);
 				
 				// Verify/Print Results
-				if(currFile.getName().split("Test")[1].equals("Test1")) {
+				if(currFile.getName().contains("1")) {
 					assertTrue(commentLine.getCommentLineCount() == 1);
 					System.out.println(currFile.getName() + " Done!");
 				}
-				else {		
+				else {
 					assertTrue(commentLine.getCommentLineCount() == 8);
 					System.out.println(currFile.getName() + " Done!");
 				}			
@@ -222,18 +230,17 @@ class EngineTest {
 				comment.finishTree(root);
 				
 				// Verify/Print Results
-				assertTrue(comment.getCommentCount() == 1);
+				assertTrue(comment.getCommentCount() == 2);
 				System.out.println(currFile.getName() + " Done!");
 			}			
-			}
 		}
-		
-	}
+	}		
+}
 	
 	public void helper(AbstractCheck b, DetailAST a) {
-		while(a != null) {
+		while(a != null) {			
 			for (int type : b.getAcceptableTokens()) {
-				if(type == a.getType()){
+				if(a.getType() == type){
 					b.visitToken(a);
 					break;
 				}

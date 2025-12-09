@@ -1,9 +1,10 @@
 package BlackboxTests.BlackBoxTestCases;
 
 public class OperandCountTest1 {
-	public void assignment(int val) {
+	public void decrement() {
 		int x;
-		x = val; // Should return 2 and 4
+		x = 0;
+		x = -1;
 	}
 
 }

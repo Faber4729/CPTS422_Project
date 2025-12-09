@@ -9,4 +9,4 @@ Require-Bundle: org.eclipse.swt,
  junit-jupiter-api
 Automatic-Module-Name: LoopCount
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Import-Package: com.puppycrawl.tools.checkstyle.api
+Import-Package: com.puppycrawl.tools.checkstyle

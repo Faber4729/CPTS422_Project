@@ -16,7 +16,8 @@ public class OperandCountCheck extends AbstractCheck{
 	// This Also Includes Package Names, Method Names, and main/args in main(string[] args)
 	@Override
 	public int[] getAcceptableTokens() {
-		return new int[] {TokenTypes.IDENT, // Variable
+		return new int[] {// Variable
+			TokenTypes.EXPR, 
 			TokenTypes.NUM_DOUBLE,
 			TokenTypes.NUM_FLOAT,
 			TokenTypes.NUM_LONG,
@@ -46,36 +47,39 @@ public class OperandCountCheck extends AbstractCheck{
 	
 	@Override
     public void visitToken(DetailAST aAST) {
-		// Increase OperandCount
-		operandCount++;
-		
-		// Check if Symbol is Unique
-		boolean flag = false;
-
-		// Iterate Through All Operands
-		for(String element : uOperandList) {
-			if(aAST.getText().equals(element)) {
-				// If the Operand Exists, Set Flag to True
-				flag = true;
-			}
-		}
-		
-		// If the Symbol Was Not Found, Increase the Unique Count
-		if(flag == false) {
-			uOperandCount++;
+		// Check to Ignore Class/Method/Package Declarations
+		if(aAST.getText() != null) {
+			// Increase OperandCount
+			operandCount++;
 			
-			// Recreate Unique List
-			String[] newOperandList = new String[uOperandList.length + 1];
-			
-			for (int i = 0; i < uOperandList.length; i++) {
-				newOperandList[i] = uOperandList[i];
+			// Check if Symbol is Unique
+			boolean flag = false;
+	
+			// Iterate Through All Operands
+			for(String element : uOperandList) {
+				if(aAST.getText().equals(element)) {
+					// If the Operand Exists, Set Flag to True
+					flag = true;
+				}
 			}
 			
-			// Add Type to Operand Collection
-			newOperandList[newOperandList.length-1] = aAST.getText();
-			
-			// Set List to Modified One
-			uOperandList = newOperandList;
+			// If the Symbol Was Not Found, Increase the Unique Count
+			if(flag == false) {
+				uOperandCount++;
+				
+				// Recreate Unique List
+				String[] newOperandList = new String[uOperandList.length + 1];
+				
+				for (int i = 0; i < uOperandList.length; i++) {
+					newOperandList[i] = uOperandList[i];
+				}
+				
+				// Add Type to Operand Collection
+				newOperandList[newOperandList.length-1] = aAST.getText();
+				
+				// Set List to Modified One
+				uOperandList = newOperandList;
+			}
 		}
     }
 

@@ -8,7 +8,7 @@ public class OperatorCountCheck extends AbstractCheck{
 	
 	// Unique Operand Count
 	private static int uOperatorCount = 0;
-	private int[] operatorCollection = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // The Length of All Possible Tokens
+	private int[] operatorCollection = new int [50];
 	private int spot = 1;
 	
 	// I Got These Tokens From https://checkstyle.sourceforge.io/checks/whitespace/operatorwrap.html#OperatorWrap
@@ -70,10 +70,8 @@ public class OperatorCountCheck extends AbstractCheck{
 		boolean flag = false;
 		
 		for(int element : operatorCollection) {
-			if(element != 1) {
-				if(aAST.getType() == element) {
-					flag = true;
-				}
+			if(aAST.getType() == element) {
+				flag = true;
 			}
 		}
 		

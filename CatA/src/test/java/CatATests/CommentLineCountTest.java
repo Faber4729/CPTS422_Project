@@ -109,7 +109,7 @@ public class CommentLineCountTest {
 		CLCC.visitToken(mockAST);
 				
 		// Assert the Final Value is As Expected
-		assertEquals(11, CLCC.getCommentLineCount());
+		assertEquals(10, CLCC.getCommentLineCount());
 	}
 	
 	// Check Begin Tree
