@@ -5,9 +5,7 @@
     <!-- This plugin provides custom Checkstyle modules. -->
     <extension
           point="net.sf.eclipsecs.core.checkstyleAddonProvider">
-          <module
-          	name="Category A"
-          />
+          <module name="Category A" />
           <module name = "Category B"/>
     </extension>
 
