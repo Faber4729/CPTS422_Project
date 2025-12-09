@@ -24,7 +24,8 @@ public class OperatorCountTest {
 			OperatorCountCheck OCC = (new OperatorCountCheck());
 
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.DIV, 
+			int[] tokenArray = new int [] {TokenTypes.ASSIGN,
+					TokenTypes.DIV, 
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 
@@ -69,7 +70,8 @@ public class OperatorCountTest {
 			OperatorCountCheck OCC = (new OperatorCountCheck());
 
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.DIV, 
+			int[] tokenArray = new int [] {TokenTypes.ASSIGN,
+					TokenTypes.DIV, 
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 
@@ -114,7 +116,8 @@ public class OperatorCountTest {
 			OperatorCountCheck OCC = (new OperatorCountCheck());
 			
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.DIV, 
+			int[] tokenArray = new int [] {TokenTypes.ASSIGN,
+					TokenTypes.DIV, 
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 

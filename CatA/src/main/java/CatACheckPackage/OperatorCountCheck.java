@@ -15,7 +15,8 @@ public class OperatorCountCheck extends AbstractCheck{
 	// They're: +, -, *, /, %, ++, --, ==, !=, >>>, <<<, >, <, >=, <=, ^, |, ||, &&, ^=, +=, -=, /=, *=, %=, >>>=, |=, ||=
 	@Override
 	public int[] getAcceptableTokens() {
-		return new int[] {TokenTypes.DIV, 
+		return new int[] {TokenTypes.ASSIGN,
+			TokenTypes.DIV, 
 			TokenTypes.PLUS, 
 			TokenTypes.MINUS, 
 			TokenTypes.STAR, 

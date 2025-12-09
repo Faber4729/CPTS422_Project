@@ -79,10 +79,8 @@ public class CommentCountTest {
 		// Create spyCommentCountCheck
 		CommentCountCheck spyCommentCountCheck = (new CommentCountCheck());
 		
-		DetailAST mockAST = null;
-		
 		// Create a Mock AST For Visiting Token
-		//DetailAST mockAST = mock(DetailAST.class); 
+		DetailAST mockAST = mock(DetailAST.class); 
 		
 		// Confirm Comment Count is Initially 0
 		assertEquals(0, spyCommentCountCheck.getCommentCount());

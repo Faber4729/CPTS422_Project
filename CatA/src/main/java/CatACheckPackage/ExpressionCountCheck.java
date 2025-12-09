@@ -15,7 +15,8 @@ public class ExpressionCountCheck extends AbstractCheck {
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 
-					TokenTypes.MOD
+					TokenTypes.MOD,
+					TokenTypes.ASSIGN
 				};
 		}
 		

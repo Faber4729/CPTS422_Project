@@ -32,8 +32,10 @@ public class CommentCountCheck extends AbstractCheck{
 	
 	@Override
 	public void visitToken(DetailAST aAST) {
-		// Increase Count 
-		commentCount++;
+		// Increase Count (If No Other Comments are On the Same Line)
+		if(aAST.getNextSibling() == null) {
+			commentCount++;
+		}
 	}
 	
 	@Override

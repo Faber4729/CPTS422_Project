@@ -28,7 +28,8 @@ public class ExpressionCountTest {
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 
-					TokenTypes.MOD
+					TokenTypes.MOD,
+					TokenTypes.ASSIGN
 				};
 			
 			// Assert the Returned Values Are the Same as Expected
@@ -47,7 +48,8 @@ public class ExpressionCountTest {
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 
-					TokenTypes.MOD
+					TokenTypes.MOD,
+					TokenTypes.ASSIGN
 				}; 
 						
 			// Assert the Returned Values Are the Same as Expected
@@ -66,7 +68,8 @@ public class ExpressionCountTest {
 					TokenTypes.PLUS, 
 					TokenTypes.MINUS, 
 					TokenTypes.STAR, 
-					TokenTypes.MOD
+					TokenTypes.MOD,
+					TokenTypes.ASSIGN
 				};
 						
 			// Assert the Returned Values Are the Same as Expected

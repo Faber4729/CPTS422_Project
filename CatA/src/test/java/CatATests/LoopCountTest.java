@@ -24,7 +24,7 @@ public class LoopCountTest {
 			LoopCountCheck LCC = (new LoopCountCheck());
 
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.FOR_CONDITION,
+			int[] tokenArray = new int [] {
 					TokenTypes.LITERAL_FOR,
 					TokenTypes.FOR_EACH_CLAUSE,
 					TokenTypes.LITERAL_WHILE,
@@ -42,7 +42,7 @@ public class LoopCountTest {
 			LoopCountCheck LCC = (new LoopCountCheck());
 
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.FOR_CONDITION,
+			int[] tokenArray = new int [] {
 					TokenTypes.LITERAL_FOR,
 					TokenTypes.FOR_EACH_CLAUSE,
 					TokenTypes.LITERAL_WHILE,
@@ -60,7 +60,7 @@ public class LoopCountTest {
 			LoopCountCheck CLCC = (new LoopCountCheck());
 			
 			// Create Array For Return Values
-			int[] tokenArray = new int [] {TokenTypes.FOR_CONDITION,
+			int[] tokenArray = new int [] {
 					TokenTypes.LITERAL_FOR,
 					TokenTypes.FOR_EACH_CLAUSE,
 					TokenTypes.LITERAL_WHILE,

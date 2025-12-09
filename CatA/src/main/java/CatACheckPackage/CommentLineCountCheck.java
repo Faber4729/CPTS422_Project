@@ -6,6 +6,7 @@ public class CommentLineCountCheck extends AbstractCheck{
 
 	private int commentLineCount = 0;
 	private int blockCommentStart = 0;
+	private boolean flag = false;
 	
 	// Allows for Comments in AST
 	@Override
@@ -34,14 +35,16 @@ public class CommentLineCountCheck extends AbstractCheck{
 	
 	@Override
 	public void visitToken(DetailAST aAST) {
-		// Increase Count If a Single Line Comment
-		if(aAST.getType() == TokenTypes.SINGLE_LINE_COMMENT) {
+		// Increase Count If a Single Line Comment and no Other Single Line Comments are On Line
+		if(aAST.getType() == TokenTypes.SINGLE_LINE_COMMENT && aAST.getNextSibling() == null) {
 			commentLineCount++;
 		}
 		
 		// If It's a Block Beginning, Set the Start Variable
-		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_BEGIN) {
+		if(aAST.getType() == TokenTypes.BLOCK_COMMENT_BEGIN && flag == false) {
+			commentLineCount++;
 			blockCommentStart = aAST.getLineNo();
+			flag = true; // After line is set, toggle flag
 		}
 		
 		// If it's a Block End, Subtract To Get the Line Count
@@ -50,6 +53,9 @@ public class CommentLineCountCheck extends AbstractCheck{
 			
 			// Add One For Final Line
 			commentLineCount++;
+			
+			// Re-toggle flag so line beginning can be reset
+			flag = false;
 		}
 	}
 	
